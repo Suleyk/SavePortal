@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="506.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            fx:controller="com.suleyk.saveportal.MainController">
+    <children>
+        <ChoiceBox fx:id="gameChoiceBox" layoutX="14.0" layoutY="64.0" prefWidth="150.0"/>
+        <ChoiceBox fx:id="profileChoiceBox" layoutX="14.0" layoutY="173.0" prefWidth="150.0"/>
+        <Button fx:id="addGameButton" layoutX="14.0" layoutY="29.0" mnemonicParsing="false" text="Add game"
+                onAction="#onAddGameButtonClick"/>
+        <Button fx:id="openBackupsFolderButton" layoutX="457.0" layoutY="14.0" mnemonicParsing="false"
+                text="Open backups folder"/>
+        <TextField fx:id="liveSavePathTextField" layoutX="15.0" layoutY="99.0" prefHeight="25.0" prefWidth="493.0"
+                   text="Selected game live save path displays here"/>
+        <TextField fx:id="profilePathTextField" layoutX="15.0" layoutY="208.0" prefHeight="25.0" prefWidth="493.0"
+                   text="Selected profile folder path displays here"/>
+        <Button fx:id="deleteGameButton" layoutX="95.0" layoutY="29.0" mnemonicParsing="false" text="Delete game"/>
+        <Button fx:id="addProfileButton" layoutX="14.0" layoutY="138.0" mnemonicParsing="false" text="Add profile"/>
+        <Button fx:id="renameProfileButton" layoutX="100.0" layoutY="138.0" mnemonicParsing="false"
+                text="Rename profile"/>
+        <Button fx:id="deleteProfileButton" layoutX="207.0" layoutY="138.0" mnemonicParsing="false"
+                text="Delete profile"/>
+        <Button fx:id="duplicateProfileButton" layoutX="305.0" layoutY="138.0" mnemonicParsing="false"
+                text="Duplicate profile"/>
+        <Button fx:id="importLiveSaveButton" layoutX="417.0" layoutY="283.0" mnemonicParsing="false"
+                text="Import live save"/>
+        <Button fx:id="exportBackupSaveButton" layoutX="417.0" layoutY="318.0" mnemonicParsing="false"
+                text="Export backup save"/>
+        <TableView fx:id="backupListTableView" layoutX="15.0" layoutY="283.0" prefHeight="200.0" prefWidth="391.0">
+            <columns>
+                <TableColumn fx:id="backupNameTableColumn" prefWidth="286.0" text="Backup name"/>
+                <TableColumn fx:id="backupDateTableColumn" editable="false" prefWidth="104.0" text="Backup date"/>
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
