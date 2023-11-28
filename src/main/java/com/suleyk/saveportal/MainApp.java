@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -18,16 +19,26 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws IOException {
         // Load the main FXML file
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        // Hide title bar: primaryStage.initStyle(StageStyle.TRANSPARENT);
         Scene scene = new Scene(root);
 
         primaryStage.setTitle("SavePortal");
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        // Initialize the application data and UI
+        initializeApplication();
+    }
+
+    private void initializeApplication() {
+        // Create necessary folders and files
         FileUtils.createSavePortalFolder();
         FileUtils.createBackupFolder();
         FileUtils.createConfigFile();
-        UIManager.populateGamesList();
-    }
 
+        // Populate the initial list of games in the UI
+        UIManager.populateGamesList();
+
+
+    }
 }

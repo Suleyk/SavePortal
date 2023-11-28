@@ -1,39 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="506.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="sceneRoot" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0"
+            prefWidth="502.0" stylesheets="@dark-mode.css" xmlns="http://javafx.com/javafx/17.0.2-ea"
             fx:controller="com.suleyk.saveportal.MainController">
     <children>
-        <ChoiceBox fx:id="gameChoiceBox" layoutX="14.0" layoutY="64.0" prefWidth="150.0"/>
-        <ChoiceBox fx:id="profileChoiceBox" layoutX="14.0" layoutY="173.0" prefWidth="150.0"/>
-        <Button fx:id="addGameButton" layoutX="14.0" layoutY="29.0" mnemonicParsing="false" text="Add game"
-                onAction="#onAddGameButtonClick"/>
-        <Button fx:id="openBackupsFolderButton" layoutX="457.0" layoutY="14.0" mnemonicParsing="false"
-                text="Open backups folder"/>
-        <TextField fx:id="liveSavePathTextField" layoutX="15.0" layoutY="99.0" prefHeight="25.0" prefWidth="493.0"
-                   text="Selected game live save path displays here"/>
-        <TextField fx:id="profilePathTextField" layoutX="15.0" layoutY="208.0" prefHeight="25.0" prefWidth="493.0"
-                   text="Selected profile folder path displays here"/>
-        <Button fx:id="deleteGameButton" layoutX="95.0" layoutY="29.0" mnemonicParsing="false" text="Delete game"/>
-        <Button fx:id="addProfileButton" layoutX="14.0" layoutY="138.0" mnemonicParsing="false" text="Add profile"/>
-        <Button fx:id="renameProfileButton" layoutX="100.0" layoutY="138.0" mnemonicParsing="false"
-                text="Rename profile"/>
-        <Button fx:id="deleteProfileButton" layoutX="207.0" layoutY="138.0" mnemonicParsing="false"
-                text="Delete profile"/>
-        <Button fx:id="duplicateProfileButton" layoutX="305.0" layoutY="138.0" mnemonicParsing="false"
-                text="Duplicate profile"/>
-        <Button fx:id="importLiveSaveButton" layoutX="417.0" layoutY="283.0" mnemonicParsing="false"
-                text="Import live save"/>
-        <Button fx:id="exportBackupSaveButton" layoutX="417.0" layoutY="318.0" mnemonicParsing="false"
-                text="Export backup save"/>
-        <TableView fx:id="backupListTableView" layoutX="15.0" layoutY="283.0" prefHeight="200.0" prefWidth="391.0">
-            <columns>
-                <TableColumn fx:id="backupNameTableColumn" prefWidth="286.0" text="Backup name"/>
-                <TableColumn fx:id="backupDateTableColumn" editable="false" prefWidth="104.0" text="Backup date"/>
-            </columns>
-        </TableView>
+        <Button fx:id="minimizeButton" layoutX="520.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinimizeButtonClick" prefHeight="20.0"
+                prefWidth="20.0" textFill="TRANSPARENT" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="2.0">
+            <font>
+                <Font size="10.0"/>
+            </font>
+            <graphic>
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@minimize.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="closeButton" layoutX="535.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                minWidth="-Infinity" mnemonicParsing="false" onAction="#onCloseButtonClick" prefHeight="20.0"
+                prefWidth="20.0" textFill="TRANSPARENT" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+            <font>
+                <Font size="10.0"/>
+            </font>
+            <graphic>
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@close.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <SplitPane dividerPositions="0.2025974025974026" minHeight="-Infinity" minWidth="-Infinity"
+                   orientation="VERTICAL" prefHeight="400.0" prefWidth="550.0" AnchorPane.bottomAnchor="3.0"
+                   AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="24.0">
+            <items>
+                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="63.0"
+                            prefWidth="600.0" SplitPane.resizableWithParent="false">
+                    <!-- Game-related Controls -->
+                    <ChoiceBox fx:id="gameChoiceBox" layoutX="5.0" layoutY="36.0" prefHeight="25.0" prefWidth="160.0"
+                               AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="36.0"/>
+                    <Button fx:id="addGameButton" layoutX="5.0" layoutY="5.0" mnemonicParsing="false"
+                            onAction="#onAddGameButtonClick" text="Add game" AnchorPane.leftAnchor="5.0"
+                            AnchorPane.topAnchor="5.0"/>
+                    <Button fx:id="deleteGameButton" layoutX="81.0" layoutY="5.0" mnemonicParsing="false"
+                            onAction="#onDeleteGameButtonClick" text="Delete game" AnchorPane.leftAnchor="81.0"
+                            AnchorPane.topAnchor="5.0"/>
+
+
+                    <!-- Profile-related Controls -->
+                    <ChoiceBox fx:id="profileChoiceBox" layoutX="198.0" layoutY="36.0" prefHeight="25.0"
+                               prefWidth="195.0" AnchorPane.rightAnchor="97.0" AnchorPane.topAnchor="36.0"/>
+                    <Button fx:id="addProfileButton" layoutX="198.0" layoutY="5.0" mnemonicParsing="false"
+                            onAction="#onAddProfileButtonClick" text="Add profile" AnchorPane.rightAnchor="216.0"
+                            AnchorPane.topAnchor="5.0"/>
+                    <Button fx:id="renameProfileButton" layoutX="279.0" layoutY="5.0" mnemonicParsing="false"
+                            onAction="#onRenameProfileButtonClick" text="Rename profile" AnchorPane.rightAnchor="114.0"
+                            AnchorPane.topAnchor="5.0"/>
+                    <Button fx:id="deleteProfileButton" layoutX="397.0" layoutY="36.0" mnemonicParsing="false"
+                            onAction="#onDeleteProfileButtonClick" text="Delete profile" AnchorPane.rightAnchor="5.0"
+                            AnchorPane.topAnchor="36.0"/>
+                    <Button fx:id="duplicateProfileButton" layoutX="381.0" layoutY="5.0" mnemonicParsing="false"
+                            onAction="#onDuplicateProfileButtonClick" text="Duplicate profile"
+                            AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"/>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="411.0" prefWidth="598.0">
+                    <children>
+
+                        <!-- Backup-related Controls -->
+                        <ListView fx:id="backupSavesListView" layoutX="5.0" layoutY="21.0" prefHeight="382.0"
+                                  prefWidth="588.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="5.0"
+                                  AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0"/>
+                        <Button fx:id="importActiveSaveButton" layoutX="5.0" layoutY="220.0" mnemonicParsing="false"
+                                onAction="#onImportActiveSaveButtonClick" text="Import active save"
+                                AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0"/>
+                        <Button fx:id="exportBackupSaveButton" layoutX="123.0" layoutY="220.0" mnemonicParsing="false"
+                                onAction="#onExportBackupSaveButtonClick" text="Export backup save"
+                                AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="123.0"/>
+
+                        <!-- Additional Controls -->
+                        <Button fx:id="openBackupsFolderButton" layoutX="358.0" layoutY="220.0" mnemonicParsing="false"
+                                onAction="#onOpenBackupsFolderButtonClick" text="Open backups folder"
+                                AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0"/>
+                        <ToggleButton fx:id="toggleDarkModeButton" contentDisplay="CENTER" layoutX="325.0"
+                                      layoutY="220.0" mnemonicParsing="false" onAction="#getToggleDarkModeButton"
+                                      text="☀" textAlignment="CENTER" AnchorPane.bottomAnchor="5.0"
+                                      AnchorPane.rightAnchor="137.0">
+                            <cursor>
+                                <Cursor fx:constant="HAND"/>
+                            </cursor>
+                        </ToggleButton>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
     </children>
 </AnchorPane>

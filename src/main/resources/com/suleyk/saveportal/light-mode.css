@@ -1,0 +1,77 @@
+/* light-mode.css */
+
+/* Background color for the entire application */
+.root {
+    -fx-background-color: #ffffff; /* Light background color */
+}
+
+/* Text color */
+.label, .button, .toggle-button, .choice-box {
+    -fx-text-fill: #000000; /* Black text color */
+}
+
+/* Background color for buttons */
+.button, .toggle-button {
+    -fx-background-color: #e0e0e0; /* Light button background color */
+}
+
+/* Hover effect for buttons */
+.button:hover, .toggle-button:hover {
+    -fx-background-color: #d0d0d0; /* Lighter hover background color */
+}
+
+/* Background color for choice box */
+.choice-box {
+    -fx-background-color: #d0d0d0; /* Light choice box background color */
+}
+
+/* Background color for selected choice box item */
+.choice-box .menu-item:selected {
+    -fx-background-color: #c0c0c0; /* Lighter background color for selected choice box item */
+}
+
+/* Background color for split pane */
+.split-pane {
+    -fx-background-color: #e8e8e8; /* Light split pane background color */
+}
+.split-pane:horizontal > .split-pane-divider {
+   -fx-background-color: transparent; /* Transparent split pane divider */
+}
+.split-pane:vertical > .split-pane-divider {
+   -fx-background-color: transparent; /* Transparent split pane divider */
+}
+
+/* Background color for list view */
+.list-view {
+    -fx-background-color: #d0d0d0; /* Light list view background color */
+}
+
+/* Background color for selected list view item */
+.list-view .list-cell:filled:selected, .list-view .list-cell:filled:focused:selected {
+    -fx-background-color: #c0c0c0; /* Lighter background color for selected list view item */
+}
+
+/* Background color for text field */
+.text-field {
+    -fx-background-color: #d0d0d0; /* Light text field background color */
+}
+
+/* Background color for selected text in text field */
+.text-field .text-input:selected {
+    -fx-background-color: #c0c0c0; /* Lighter background color for selected text in text field */
+}
+
+/* Scroll bar color */
+.scroll-bar {
+    -fx-background-color: #d0d0d0; /* Light scroll bar background color */
+}
+
+/* Thumb color for scroll bar */
+.scroll-bar .thumb {
+    -fx-background-color: #b0b0b0; /* Light thumb color for scroll bar */
+}
+
+/* Hover effect for thumb in scroll bar */
+.scroll-bar .thumb:hover {
+    -fx-background-color: #909090; /* Lighter hover background color for thumb in scroll bar */
+}
