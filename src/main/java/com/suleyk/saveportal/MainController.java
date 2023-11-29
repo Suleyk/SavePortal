@@ -1,11 +1,14 @@
 package com.suleyk.saveportal;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -117,6 +120,7 @@ public class MainController {
     public void setMainScene(Scene scene) {
         this.mainScene = scene;
     }
+
 
     // Initialize method called when the UI is loaded
     public void initialize() {
@@ -371,6 +375,9 @@ public class MainController {
         }
     }
 
+    @FXML
+    private Label exportFeedbackLabel;
+
     // Event handler for the "Export Backup Save" button
     @FXML
     private void onExportBackupSaveButtonClick() throws IOException {
@@ -382,6 +389,10 @@ public class MainController {
 
             if (destinationPath != null) {
                 FileUtils.copyFolder(sourcePath, destinationPath);
+
+                // Show export feedback message
+                showExportFeedback("Backup save exported successfully!");
+
                 System.out.println("Export successful! Contents copied to: " + destinationPath);
             } else {
                 System.err.println("Error reading activeSavePath.ini from the selected game.");
@@ -390,6 +401,19 @@ public class MainController {
             System.err.println("Please select a game, profile, and backup save first.");
         }
     }
+
+    private void showExportFeedback(String message) {
+        exportFeedbackLabel.setText(message);
+        exportFeedbackLabel.setVisible(true);
+
+        // Set up a timeline to hide the label after a short delay (e.g., 3 seconds)
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.seconds(3),
+                event -> exportFeedbackLabel.setVisible(false)));
+        timeline.setCycleCount(1);
+        timeline.play();
+    }
+
 
     // Event handler for the "Delete Game" button
     @FXML

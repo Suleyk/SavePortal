@@ -2,7 +2,10 @@ package com.suleyk.saveportal;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -85,6 +88,26 @@ public class UIManager {
             String[] folderNames = Arrays.stream(subfolders).map(File::getName).toArray(String[]::new);
             backupSavesList.setAll(folderNames);
         }
+    }
+
+    // Method to make the stage draggable
+    public static void makeStageDraggable(Stage stage, Scene scene) {
+        double[] xOffset = {0};
+        double[] yOffset = {0};
+
+        // Set up event handlers for mouse press, drag, and release
+        scene.setOnMousePressed(event -> {
+            xOffset[0] = event.getSceneX();
+            yOffset[0] = event.getSceneY();
+        });
+
+        scene.setOnMouseDragged(event -> {
+            double x = event.getScreenX() - xOffset[0];
+            double y = event.getScreenY() - yOffset[0];
+
+            stage.setX(x);
+            stage.setY(y);
+        });
     }
 
 

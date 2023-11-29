@@ -19,7 +19,7 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws IOException {
         // Load the main FXML file
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        // Hide title bar: primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         Scene scene = new Scene(root);
 
         primaryStage.setTitle("SavePortal");
@@ -28,6 +28,9 @@ public class MainApp extends Application {
 
         // Initialize the application data and UI
         initializeApplication();
+
+        // Make stage draggable method call
+        UIManager.makeStageDraggable(primaryStage, scene);
     }
 
     private void initializeApplication() {
