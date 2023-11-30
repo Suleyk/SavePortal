@@ -3,9 +3,13 @@ package com.suleyk.saveportal;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-import java.awt.*;
+
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -108,6 +112,19 @@ public class UIManager {
             stage.setX(x);
             stage.setY(y);
         });
+    }
+
+    public static void styleDialog(Dialog<?> dialog) {
+        DialogPane dialogPane = dialog.getDialogPane();
+        dialogPane.getStylesheets().add(
+                UIManager.class.getResource("dark-mode.css").toExternalForm());
+        dialogPane.getStyleClass().add("dialog-pane");
+
+        // Set the StageStyle to TRANSPARENT
+        Stage dialogStage = (Stage) dialog.getDialogPane().getScene().getWindow();
+        dialogStage.initStyle(StageStyle.TRANSPARENT);
+        dialog.setGraphic(new ImageView()); // Empty ImageView
+        UIManager.makeStageDraggable(dialogStage, dialog.getDialogPane().getScene());
     }
 
 

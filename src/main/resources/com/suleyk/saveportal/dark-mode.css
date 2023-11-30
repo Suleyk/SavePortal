@@ -2,7 +2,9 @@
 
 /* Background color for the entire application */
 .root {
-    -fx-background-color: #303030;
+    -fx-background-color: #304860; /* Dark Blue */
+    -fx-accent: #e67e22; /* Subtle Orange */
+
 }
 
 /* Text color */
@@ -12,27 +14,27 @@
 
 /* Background color for buttons */
 .button, .toggle-button {
-    -fx-background-color: #474747;
+    -fx-background-color: #304860; /* Darker Blue */
 }
 
 /* Hover effect for buttons */
 .button:hover, .toggle-button:hover {
-    -fx-background-color: #424242;
+    -fx-background-color: #4b688b; /* Slightly Lighter Blue on Hover */
 }
 
 /* Background color for choice box */
 .choice-box {
-    -fx-background-color: #424242;
+    -fx-background-color: #304860; /* Darker Blue */
 }
 
 /* Background color for selected choice box item */
 .choice-box .menu-item:selected {
-    -fx-background-color: #616161;
+    -fx-background-color: #e98935; /* Subtle Orange */
 }
 
 /* Background color for split pane */
 .split-pane {
-    -fx-background-color: #2a2a2a;
+    -fx-background-color: #192734; /* Dark Blue */
 }
 .split-pane:horizontal > .split-pane-divider {
    -fx-background-color: transparent;
@@ -43,43 +45,43 @@
 
 /* Background color for list view */
 .list-view {
-    -fx-background-color: #424242;
+    -fx-background-color: #304860; /* Darker Blue */
 }
 
 /* Background color for selected list view item */
 .list-view .list-cell:filled:selected, .list-view .list-cell:filled:focused:selected {
-    -fx-background-color: #616161;
+    -fx-background-color: #e98935; /* Subtle Orange */
 }
 
 /* Background color for text field */
 .text-field {
-    -fx-background-color: #424242;
+    -fx-background-color: #304860; /* Darker Blue */
 }
 
 /* Background color for selected text in text field */
 .text-field .text-input:selected {
-    -fx-background-color: #616161;
+    -fx-background-color: #e98935; /* Subtle Orange */
 }
 
 /* Scroll bar color */
 .scroll-bar {
-    -fx-background-color: #424242;
+    -fx-background-color: #304860; /* Darker Blue */
 }
 
 /* Thumb color for scroll bar */
 .scroll-bar .thumb {
-    -fx-background-color: #757575;
+    -fx-background-color: #546a89; /* Darker Gray-Blue */
 }
 
 /* Hover effect for thumb in scroll bar */
 .scroll-bar .thumb:hover {
-    -fx-background-color: #9e9e9e;
+    -fx-background-color: #738fae; /* Lighter Gray-Blue on Hover */
 }
 
 /* Context menu */
 .context-menu {
-    -fx-background-color: #2b2b2b; /* Dark background color */
-    -fx-border-color: #444444; /* Border color */
+    -fx-background-color: #18232f; /* Darker Blue */
+    -fx-border-color: #304860; /* Darker Blue */
 }
 
 .context-menu .menu-item {
@@ -87,23 +89,171 @@
 }
 
 .context-menu .menu-item:hover {
-    -fx-background-color: #555555; /* Hover background color */
+    -fx-background-color: #4b688b; /* Slightly Lighter Blue on Hover */
 }
 
 /* List view */
 .list-cell {
-    -fx-background-color: #333333; /* Dark background color for list items */
+    -fx-background-color: #1d2c3f; /* Slightly Lighter Blue */
     -fx-text-fill: #ffffff; /* Text color for list items */
 }
 
 .list-cell:hover {
-    -fx-background-color: #333333; /* Hover background color for list items */
+    -fx-background-color: #2a3a4e; /* Darker Blue on Hover */
 }
 
 .list-view {
-    -fx-background-color: #303030; /* Dark background color for the entire list view */
-
-
-
+    -fx-background-color: #192734; /* Dark Blue */
 }
 
+/* Context menu */
+.context-menu {
+    -fx-background-color: #e98935; /* Subtle Orange */
+    -fx-border-color: #304860; /* Darker Blue */
+}
+
+.context-menu .menu-item {
+    -fx-text-fill: #ffffff; /* Text color */
+}
+
+.context-menu .menu-item:hover {
+    -fx-background-color: #dd7113; /* Slightly Darker Orange on Hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Customize the dialog pane */
+.dialog-pane {
+    -fx-background-color: #304860; /* Darker Blue, similar to root background */
+}
+
+/* Customize the header area of the dialog */
+.dialog-pane .dialog-header {
+    -fx-background-color: #1d2c3f; /* Slightly Lighter Blue, similar to list cell */
+}
+
+/* Customize the title label of the dialog */
+.dialog-pane .dialog-title {
+    -fx-text-fill: #ffffff; /* Text color */
+}
+
+/* Customize the content area of the dialog */
+.dialog-pane .dialog-pane .content {
+    -fx-background-color: #1d2c3f; /* Slightly Lighter Blue, similar to list cell */
+}
+
+/* Customize the button area of the dialog */
+.dialog-pane .dialog-pane .button-bar {
+    -fx-background-color: #1d2c3f; /* Slightly Lighter Blue, similar to list cell */
+}
+
+/* Customize the default button of the dialog */
+.dialog-pane .dialog-pane .button-bar .default-button {
+    -fx-background-color: #4b688b; /* Slightly Lighter Blue on Hover, similar to button hover */
+}
+
+/* Customize the default button of the dialog on hover */
+.dialog-pane .dialog-pane .button-bar .default-button:hover {
+    -fx-background-color: #738fae; /* Lighter Gray-Blue on Hover, similar to thumb hover */
+}
+
+
+/* Customize the button */
+.dialog-pane .button {
+    -fx-background-color: #3c5977; /* Darker Blue, similar to root background */
+    -fx-text-fill: #ffffff; /* Text color for buttons */
+}
+
+/* Hover effect for buttons */
+.dialog-pane .button:hover {
+    -fx-background-color: #4b688b; /* Slightly Lighter Blue on Hover, similar to button hover */
+}
+
+
+
+
+
+
+
+
+
+/* Customize the TextInputDialog */
+
+
+.text-input-dialog .text-input {
+    -fx-background-color: #496e92; /* Light Blue for text input field background */
+    -fx-text-fill: #ffffff; /* Light Orange for text color in the input field */
+    -fx-border-color: #496e92; /* Darker Blue for input field border */
+    /* Add more styles as needed */
+}
+
+.text-input-dialog .text-input-focused {
+    -fx-background-color: #FFFFFF; /* White when the input field is focused */
+    -fx-text-fill: #1d2c3f; /* Darker Blue when the input field is focused */
+    /* Add more styles as needed */
+}
+
+.text-input-dialog .text-input-disabled {
+    -fx-background-color: #E8E8E8; /* Light Gray for disabled input field background */
+    -fx-text-fill: #A0A0A0; /* Lighter Gray for text color in the disabled input field */
+    /* Add more styles as needed */
+}
+
+.text-input-dialog .label {
+    -fx-text-fill: #1d2c3f; /* Darker Blue for label text color */
+    -fx-font-size: 14px; /* Font size for the label */
+    /* Add more styles as needed */
+}
+
+.text-input-dialog .content {
+    -fx-background-color: #D4E4F7; /* Light Blue for content area background */
+    /* Add more styles as needed */
+}
+
+.text-input-dialog .button-bar {
+    -fx-background-color: #D4E4F7; /* Light Blue for button bar background */
+    /* Add more styles as needed */
+}
+
+.text-input-dialog .button-bar .button {
+    -fx-background-color: #496e92; /* Darker Blue for button background */
+    -fx-text-fill: #ffffff; /* White for button text color */
+    /* Add more styles as needed */
+}
+
+.text-input-dialog .button-bar .button:hover {
+    -fx-background-color: #738fae; /* Lighter Gray-Blue on Hover for buttons */
+    /* Add more styles as needed */
+}
+
+.text-input-dialog .dialog-pane .dialog-header {
+    -fx-background-color: #1d2c3f; /* Slightly Lighter Blue for the header area */
+    -fx-text-fill: #ffffff; /* White for header text color */
+    /* Add more styles as needed */
+}
+
+.text-input-dialog:header .header-panel {
+    -fx-background-color: #1d2c3f; /* Slightly Lighter Blue for the header area */
+    -fx-text-fill: #ffffff; /* White for header text color */
+    /* Add more styles as needed */
+}
+
+
+.dialog-pane:header .header-panel .label {
+    /*
+    -fx-font-style: italic;
+    -fx-font-size: 2em;
+    */
+    -fx-text-fill: #ffffff; /* Text color for header label */
+}

@@ -10,7 +10,6 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -35,8 +34,6 @@ public class MainController {
     private Button duplicateProfileButton;
     @FXML
     private ListView<String> backupSavesListView;
-    @FXML
-    private AnchorPane sceneRoot;
     @FXML
     private ToggleButton toggleDarkModeButton;
     @FXML
@@ -108,19 +105,9 @@ public class MainController {
             System.err.println("Backup folder path is not set.");
         }
     }
-
     public ToggleButton getToggleDarkModeButton() {
         return toggleDarkModeButton;
     }
-
-    public Scene getMainScene() {
-        return mainScene;
-    }
-
-    public void setMainScene(Scene scene) {
-        this.mainScene = scene;
-    }
-
 
     // Initialize method called when the UI is loaded
     public void initialize() {
@@ -197,13 +184,15 @@ public class MainController {
             dialog.setHeaderText(null);
             dialog.setContentText("Enter the new name for the backup save:");
 
+            UIManager.styleDialog(dialog);
+
+
             Optional<String> result = dialog.showAndWait();
             result.ifPresent(newBackupSaveName -> {
                 // Validate if the new backup save name is not empty
                 if (!newBackupSaveName.trim().isEmpty()) {
-                    // Build the paths for the old and new backup save folders
+                    // Build the path for the old backup save folders
                     String oldBackupSavePath = Paths.get(FileUtils.backupFolderPath, selectedGame, selectedProfile, selectedBackupSave).toString();
-                    String newBackupSavePath = Paths.get(FileUtils.backupFolderPath, selectedGame, selectedProfile, newBackupSaveName).toString();
 
                     // Rename the backup save
                     FileUtils.rename(oldBackupSavePath, newBackupSaveName);
@@ -264,6 +253,8 @@ public class MainController {
         alert.setHeaderText(null);
         alert.setContentText(message);
 
+        UIManager.styleDialog(alert);
+
         Optional<ButtonType> result = alert.showAndWait();
         return result.isPresent() && result.get() == ButtonType.OK;
     }
@@ -274,6 +265,9 @@ public class MainController {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
+
+        UIManager.styleDialog(alert);
+
         alert.showAndWait();
     }
 
@@ -309,11 +303,16 @@ public class MainController {
 
         if (activeSavePath != null) {
             TextInputDialog dialog = new TextInputDialog();
+            UIManager.styleDialog(dialog);
+
+
             dialog.setTitle("Game Name");
             dialog.setHeaderText("Enter the name for the new game:");
             Optional<String> result = dialog.showAndWait();
 
             result.ifPresent(gameName -> addGame(gameName, activeSavePath.getAbsolutePath()));
+
+            UIManager.populateGamesList();
         }
     }
 
@@ -322,11 +321,19 @@ public class MainController {
     private void onAddProfileButtonClick() {
         if (selectedGame != null) {
             TextInputDialog dialog = new TextInputDialog();
+
+            UIManager.styleDialog(dialog);
+
             dialog.setTitle("Profile Name");
             dialog.setHeaderText("Enter the name for the new profile:");
             Optional<String> result = dialog.showAndWait();
 
-            result.ifPresent(profileName -> FileUtils.addProfile(selectedGame, profileName));
+            result.ifPresent(profileName -> {
+                FileUtils.addProfile(selectedGame, profileName);
+                UIManager.populateProfileList(selectedGame);
+                profileChoiceBox.setValue(profileName);
+            });
+
         } else {
             System.err.println("Please select a game first.");
         }
@@ -338,10 +345,14 @@ public class MainController {
         FileUtils.addProfile(gameName, "DefaultProfile");
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        UIManager.styleDialog(alert);
         alert.setTitle("Game Added");
         alert.setHeaderText(null);
         alert.setContentText("Game '" + gameName + "' added successfully!");
         alert.showAndWait();
+
+        gameChoiceBox.setValue(gameName);
     }
 
     // Method to get the active save path for the selected game
@@ -426,6 +437,10 @@ public class MainController {
                 FileUtils.deleteFolder(gameFolder);
 
                 System.out.println("Game deleted: " + selectedGame);
+
+                UIManager.populateGamesList();
+                gameChoiceBox.setValue(null);
+
             }
         } else {
             System.err.println("Please select a game first.");
@@ -465,8 +480,11 @@ public class MainController {
         if (selectedProfile != null) {
             TextInputDialog dialog = new TextInputDialog(selectedProfile);
             dialog.setTitle("Rename Profile");
-            dialog.setHeaderText(null);
-            dialog.setContentText("Enter the new name for the profile:");
+            dialog.setHeaderText("Enter the new name for the profile:");
+            //dialog.setContentText("Enter the new name for the profile:");
+
+            UIManager.styleDialog(dialog);
+
 
             Optional<String> result = dialog.showAndWait();
             result.ifPresent(newProfileName -> {
@@ -480,6 +498,8 @@ public class MainController {
                             Files.move(oldProfilePath, newProfilePath);
                             System.out.println("Profile renamed from '" + selectedProfile + "' to '" + newProfileName + "'.");
                             selectedProfile = newProfileName;
+                            UIManager.populateProfileList(selectedGame);
+                            profileChoiceBox.setValue(newProfileName);
                         } catch (IOException e) {
                             e.printStackTrace();
                             System.err.println("Error renaming profile.");
