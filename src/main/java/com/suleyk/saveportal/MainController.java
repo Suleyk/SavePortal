@@ -3,9 +3,7 @@ package com.suleyk.saveportal;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -46,7 +44,6 @@ public class MainController {
     private Button minimizeButton;
     @FXML
     private Button closeButton;
-    private Scene mainScene;
     // Selected items
     private String selectedGame;
     private String selectedProfile;
@@ -181,8 +178,8 @@ public class MainController {
             // Display an input dialog to get the new backup save name
             TextInputDialog dialog = new TextInputDialog(selectedBackupSave);
             dialog.setTitle("Rename Backup Save");
-            dialog.setHeaderText(null);
-            dialog.setContentText("Enter the new name for the backup save:");
+            dialog.setHeaderText("Enter the new name for the backup save:");
+            dialog.setContentText(null);
 
             UIManager.styleDialog(dialog);
 
@@ -353,6 +350,7 @@ public class MainController {
         alert.showAndWait();
 
         gameChoiceBox.setValue(gameName);
+        profileChoiceBox.setValue("DefaultProfile");
     }
 
     // Method to get the active save path for the selected game

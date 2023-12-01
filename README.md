@@ -1,110 +1,155 @@
-# SavePortal User Guide - 🚧 WORK IN PROGRESS! 🚧
+# **🚧 WORK IN PROGRESS! 🚧**
+
+# SavePortal User Guide
 
 ## Introduction
 
-Welcome to SavePortal, your versatile tool for effortlessly managing and safeguarding your game saves. SavePortal is
-designed with simplicity in mind, allowing you to efficiently backup, restore, and organize your precious game progress.
-Whether you're experimenting with different playthroughs, backing up mod folders, or creating checkpoints for specific
-game moments, SavePortal is here to streamline the process.
+Welcome to SavePortal, your simple tool for managing game saves. SavePortal makes it easy to back up, restore, and
+organize your game progress.
 
 ## Features
 
-- **Backup and Restore Saves:** Protect your game progress with easy-to-use backup and restore features.
-- **Quick Game Switching:** Jump between different game instances swiftly to practice specific scenarios or boss fights.
-- **Profile Customization:** Create, rename, delete, and duplicate profiles within each game for a personalized gaming
-  experience.
-- **Versatile Backup:** While the primary focus is on backing up savegame folders, SavePortal can be creatively used for
-  backing up mod folders, experimenting with different game setups, and more.
-- **Intuitive UI:** A clean and intuitive user interface for a seamless experience.
+- **Backup and restore saves:** Protect your game progress effortlessly.
+- **Profiles management:** Create, rename, delete, and duplicate profiles for each playthrough or scenario, for example,
+  a profile for a specific speedrun route, a no-hit strat, etc.
+- **Versatile backups:** Back up entire folder structures such as savegame folders, mod folders, or experiment with
+  different game setups.
+- **Intuitive UI:** Enjoy a straightforward interface for a seamless experience.
 
 ## Installation
 
-1. **Download:** Head over to the [SavePortal GitHub releases](https://github.com/Suleyk/SavePortal/releases) page.
-2. **Select Version:** Choose the version that suits your needs and download the corresponding ZIP file.
-3. **Extract Files:** Unzip the downloaded file to your desired location.
+1. **Download:** Get the latest SavePortal release from [here](https://github.com/Suleyk/SavePortal/releases).
+2. **Extract Files:** Unzip the downloaded file to your chosen location.
+3. **Run SavePortal:** Launch the application. SavePortal requires Java; ensure you have Java Runtime Environment (JRE)
+   version 11 or later installed on your system. You can download it
+   from [Oracle Java](https://www.oracle.com/java/technologies/javase-downloads.html)
+   or [OpenJDK](https://adoptopenjdk.net/).
 
-## Getting Started
+## Getting started
 
-### Adding a Game
+### Adding a game
 
-1. Click on the "Add Game" button.
-2. Choose the folder where your game's active saves (savegame folder) are stored.
+1. Click "Add game."
+2. Choose the folder where your game saves are stored.
 3. Enter a name for the new game.
 4. Click "OK" to confirm.
 
-### Managing Profiles
+### Managing profiles
 
-- **Add Profile:** Create custom profiles within a game for different playthroughs or characters.
-- **Duplicate Profile:** Quickly create a copy of a profile, including all its backups.
-- **Rename Profile:** Personalize your profiles by giving them meaningful names.
-- **Delete Profile:** Remove unwanted profiles easily.
+- **Add profile:** Create custom profiles for different playthroughs or characters.
+- **Duplicate profile:** Quickly create a copy of a profile, including all its backups.
+- **Rename profile:** Personalize your profiles with meaningful names.
+- **Delete profile:** Remove unwanted profiles easily.
 
-### Backing Up Saves
+### Backing up saves
 
-1. When adding a game, select the folder where your active saves (savegame folder) are stored. This will be the target
-   for backup.
-2. Click "Import Active Save" to create a backup of your current game savestate.
+1. When adding a game, the chosen folder will be the target for backups.
+2. Click "Import active save" to create a backup of your current game savestate.
 
-### Restoring Saves
+### Restoring saves
 
-1. Select the backup you want to restore.
-2. Click "Export Active Save" to replace the active save (savegame folder) with the selected backup.
+1. Select from the list the backup you want to restore.
+2. Click "Export backup save" to replace the active save with the selected backup.
 
-### Deleting a Game or Profile
+**_Keep in mind:_** _exporting the backup save will restore the entire folder structure, removing any new subfolders or
+files the game created. Make sure you know what each folder contains and how each game manages the savedata._
 
-1. Select the game or profile you want to delete.
-2. Click "Delete Game" or "Delete Profile," respectively.
+---
 
-## Tips for Creativity
+### **_How importing a save works:_**
 
-SavePortal is not just limited to game saves; it's a versatile tool that allows you to explore different possibilities:
+When you click **Import**, SavePortal duplicates the entire folder you chose earlier when adding a game. This
+duplication includes every file and subfolder inside the selected folder, maintaining the exact structure.
+
+For example:
+
+If the game has this structure:
+
+```
+Game Folder
+├── GameData1
+│   ├── Textures
+│   ├── Binaries
+│   └── Configuration
+├── GameData2
+└── SaveFolder <--------
+    ├── Save1
+    │   ├── DataFile1.sav
+    │   └── DataFile2.sav
+    └── Save2
+        ├── DataFile1.sav
+        └── DataFile2.sav
+```
+
+By choosing **SaveFolder**, when clicking **Import**, it would create an identical copy:
+
+```
+SavePortal
+└── Backups
+  └── AddedGame
+    └── Profile1
+        └── ImportedSave00 <--------
+            ├── Save1
+            │   ├── DataFile1.sav
+            │   └── DataFile2.sav
+            └── Save2
+                ├── DataFile1.sav
+                └── DataFile2.sav
+```
+
+---
+
+## Tips for creativity
+
+SavePortal is not just limited to game saves; it's a versatile tool that allows you to explore different possibilities,
+since you're the one to choose the target folder which could be anything, from saves to mods folder, or even the entire
+game folder.
 
 - **Quick Practice:** Use SavePortal as a checkpoint maker to quickly return to specific in-game scenarios or boss
   fights.
 - **Mod Folder Backup:** Get creative by using SavePortal to back up and experiment with mod folders.
 - **Multiple Game Setups:** Manage different game setups for diverse gaming experiences.
 
-*Note: SavePortal actively copies all contents from the selected folder during the backup process, offering versatility
-for various creative uses. While it is primarily designed for backing up savegame folders, feel free to explore
-different applications and ensure a clear understanding of the primary purpose.*
-
 Feel free to explore and make SavePortal your personalized gaming companion!
 
 ---
 
-## Important Note
+## Important note
 
-SavePortal is a work in progress, and although it has been tested, there may be unexpected behavior. Please handle your
-data with care and consider creating backups as a precaution. Your feedback is invaluable in improving the tool.
+SavePortal is a work in progress, and although it has been tested thoroughly, there may be unexpected behavior. Please
+handle your data with care and consider creating backups manually occasionally as a precaution. Your feedback is
+invaluable in improving the tool.
 
 Feel free to explore and make SavePortal your personalized gaming companion!
 
----  
+<br>
+
+---
 
 <br><br><br>
 
 ---
 
-# SavePortal Developer Section
+# SavePortal developer section
 
-## Welcome Developers,
+## Welcome developers,
 
 I appreciate your interest in SavePortal, a project that holds significance for me as a self-taught developer delving
 into the world of software creation.
 
-## Technical Snapshot
+## Technical snapshot
 
 - **Technology Stack:** SavePortal leverages JavaFX to deliver an intuitive and sleek user interface.
 - **Objective:** SavePortal aims to simplify the management of game saves, offering an efficient solution for backup,
   restore, and organization.
 
-## Development Journey Insights
+## Development journey insights
 
 SavePortal is a product of individual learning and exploration in the realm of programming. While the project has
 received input from various sources and benefited from the insights of ChatGPT, the core learning experience revolves
 around self-discovery.
 
-## Continuous Enhancement
+## Continuous enhancement
 
 SavePortal is an evolving project. Your feedback, suggestions, and contributions are highly valued and contribute to the
 ongoing refinement and enhancement of this tool.
