@@ -8,20 +8,20 @@ import java.util.List;
 import java.awt.Desktop;
 public class FileUtils {
 
-    public static String savePortalFolderPath = Paths.get(System.getProperty("user.home"), "SavePortal").toString();
-    public static String backupFolderPath = Paths.get(savePortalFolderPath, "Backups").toString();
-    public static String configFilePath = Paths.get(savePortalFolderPath, "config.ini").toString();
+    public static final String SAVEPORTAL_FOLDER_PATH = Paths.get(System.getProperty("user.home"), "SavePortal").toString();
+    public static final String BACKUPS_FOLDER_PATH = Paths.get(SAVEPORTAL_FOLDER_PATH, "Backups").toString();
+    public static final String CONFIGFILE_PATH = Paths.get(SAVEPORTAL_FOLDER_PATH, "config.ini").toString();
 
     public static void createSavePortalFolder() {
-        createFolder(savePortalFolderPath);
+        createFolder(SAVEPORTAL_FOLDER_PATH);
     }
 
     public static void createBackupFolder() {
-        createFolder(backupFolderPath);
+        createFolder(BACKUPS_FOLDER_PATH);
     }
 
     public static void createConfigFile() {
-        createFile(configFilePath);
+        createFile(CONFIGFILE_PATH);
     }
 
     public static void copyFolder(String sourcePath, String destinationPath) throws IOException {
@@ -77,19 +77,6 @@ public class FileUtils {
         }
     }
 
-    private static void copyFileContent(File sourceFile, File destinationFile) {
-        try {
-            Path sourcePath = sourceFile.toPath();
-            Path destinationPath = destinationFile.toPath();
-
-            Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("File content copied from " + sourceFile.getAbsolutePath() + " to " + destinationFile.getAbsolutePath());
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.err.println("Error copying file content: " + e.getMessage());
-        }
-    }
-
     public static void rename(String currentPath, String newName) {
         File currentFile = new File(currentPath);
         if (!currentFile.exists()) {
@@ -115,7 +102,7 @@ public class FileUtils {
 
     public static void addGame(String gameName, String activeSavePath) {
         // Create the game folder inside the Backups folder
-        String gameFolderPath = Paths.get(backupFolderPath, gameName).toString();
+        String gameFolderPath = Paths.get(BACKUPS_FOLDER_PATH, gameName).toString();
         createFolder(gameFolderPath);
 
         // Create an ini file for the game
@@ -138,7 +125,7 @@ public class FileUtils {
     }
 
     public static void addProfile(String gameName, String profileName) {
-        String gameFolderPath = Paths.get(backupFolderPath, gameName).toString();
+        String gameFolderPath = Paths.get(BACKUPS_FOLDER_PATH, gameName).toString();
         String profileFolderPath = Paths.get(gameFolderPath, profileName).toString();
         createFolder(profileFolderPath);
     }
@@ -210,13 +197,6 @@ public class FileUtils {
     }
 
 
-    public static void main(String[] args) {
-        // Specify the path of the folder you want to open
-        String folderPath = "/path/to/your/folder";
-
-        // Open the folder with the default file manager
-        openFolder(folderPath);
-    }
 
     public static void openFolder(String folderPath) {
         try {

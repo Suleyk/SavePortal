@@ -35,7 +35,7 @@ public class UIManager {
     // Method to dynamically populate the games list
     public static void populateGamesList() {
         // Define the path to the Backups folder
-        String backupsFolderPath = FileUtils.backupFolderPath;
+        String backupsFolderPath = FileUtils.BACKUPS_FOLDER_PATH;
 
         // Get the list of folders inside the Backups folder
         File backupsFolder = new File(backupsFolderPath);
@@ -58,7 +58,7 @@ public class UIManager {
         }
 
         // Define the path to the selected profile folder
-        String selectedGameFolderPath = Paths.get(FileUtils.backupFolderPath, selectedGame).toString();
+        String selectedGameFolderPath = Paths.get(FileUtils.BACKUPS_FOLDER_PATH, selectedGame).toString();
 
         // Get the list of folders inside the selected game folder
         File selectedGameFolder = new File(selectedGameFolderPath);
@@ -81,7 +81,7 @@ public class UIManager {
         }
 
         // Define the path to the selected profile folder
-        String selectedProfileFolderPath = Paths.get(FileUtils.backupFolderPath, selectedGame, selectedProfile).toString();
+        String selectedProfileFolderPath = Paths.get(FileUtils.BACKUPS_FOLDER_PATH, selectedGame, selectedProfile).toString();
         File selectedProfileFolder = new File(selectedProfileFolderPath);
 
         // Get the list of subfolders inside the selected profile folder

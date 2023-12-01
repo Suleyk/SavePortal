@@ -75,9 +75,9 @@ public class MainController {
         // Check if a game and profile are selected
         if (selectedGame != null && selectedProfile != null) {
             // Define the source and destination paths
-            String sourcePath = Paths.get(FileUtils.backupFolderPath, selectedGame, selectedProfile).toString();
+            String sourcePath = Paths.get(FileUtils.BACKUPS_FOLDER_PATH, selectedGame, selectedProfile).toString();
             String duplicateProfile = selectedProfile + "_Copy";  // Modify as needed
-            String destinationPath = Paths.get(FileUtils.backupFolderPath, selectedGame, duplicateProfile).toString();
+            String destinationPath = Paths.get(FileUtils.BACKUPS_FOLDER_PATH, selectedGame, duplicateProfile).toString();
 
             // Copy the profile directory
             FileUtils.copyFolder(sourcePath, destinationPath);
@@ -95,9 +95,9 @@ public class MainController {
 
     @FXML
     private void onOpenBackupsFolderButtonClick() {
-        String backupFolderPath = FileUtils.backupFolderPath;
-        if (backupFolderPath != null) {
-            FileUtils.openFolder(backupFolderPath);
+        String BACKUPS_FOLDER_PATH = FileUtils.BACKUPS_FOLDER_PATH;
+        if (BACKUPS_FOLDER_PATH != null) {
+            FileUtils.openFolder(BACKUPS_FOLDER_PATH);
         } else {
             System.err.println("Backup folder path is not set.");
         }
@@ -125,10 +125,9 @@ public class MainController {
         importActiveSaveButton.disableProperty().bind(profileChoiceBox.valueProperty().isNull());
         exportBackupSaveButton.disableProperty().bind(profileChoiceBox.valueProperty().isNull().or(backupSavesListView.getSelectionModel().selectedItemProperty().isNull()));
 
-        profileChoiceBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+        profileChoiceBox.valueProperty().addListener((observable, oldValue, newValue) ->
             // Clear the backups list when the selected profile changes
-            backupSavesListView.getItems().clear();
-        });
+                backupSavesListView.getItems().clear());
 
         // Update backups list when importing
         importActiveSaveButton.setOnMouseClicked(event -> UIManager.populateBackupSavesList(selectedGame, selectedProfile));
@@ -189,7 +188,7 @@ public class MainController {
                 // Validate if the new backup save name is not empty
                 if (!newBackupSaveName.trim().isEmpty()) {
                     // Build the path for the old backup save folders
-                    String oldBackupSavePath = Paths.get(FileUtils.backupFolderPath, selectedGame, selectedProfile, selectedBackupSave).toString();
+                    String oldBackupSavePath = Paths.get(FileUtils.BACKUPS_FOLDER_PATH, selectedGame, selectedProfile, selectedBackupSave).toString();
 
                     // Rename the backup save
                     FileUtils.rename(oldBackupSavePath, newBackupSaveName);
@@ -217,7 +216,7 @@ public class MainController {
 
             if (userConfirmed) {
                 // Build the path for the backup save folder
-                String backupSavePath = Paths.get(FileUtils.backupFolderPath, selectedGame, selectedProfile, selectedBackupSave).toString();
+                String backupSavePath = Paths.get(FileUtils.BACKUPS_FOLDER_PATH, selectedGame, selectedProfile, selectedBackupSave).toString();
 
                 // Delete the backup save
                 FileUtils.deleteFolder(new File(backupSavePath));
@@ -356,7 +355,7 @@ public class MainController {
     // Method to get the active save path for the selected game
     private String getSelectedGameActiveSavePath() {
         if (selectedGame != null) {
-            String activeSavePathIniPath = Paths.get(FileUtils.backupFolderPath, selectedGame, "activeSavePath.ini").toString();
+            String activeSavePathIniPath = Paths.get(FileUtils.BACKUPS_FOLDER_PATH, selectedGame, "activeSavePath.ini").toString();
             return FileUtils.readIniFile(activeSavePathIniPath, "activeSavePath");
         } else {
             System.err.println("Please select a game first.");
@@ -372,7 +371,7 @@ public class MainController {
             System.out.println("Source Path: " + sourcePath);
 
             if (sourcePath != null) {
-                String destinationFolder = FileUtils.generateUniqueFolderName(Paths.get(FileUtils.backupFolderPath, selectedGame, selectedProfile).toString(), "ImportedSave");
+                String destinationFolder = FileUtils.generateUniqueFolderName(Paths.get(FileUtils.BACKUPS_FOLDER_PATH, selectedGame, selectedProfile).toString(), "ImportedSave");
                 FileUtils.copyFolder(sourcePath, destinationFolder);
 
                 System.out.println("Import successful! Contents copied to: " + destinationFolder);
@@ -391,7 +390,7 @@ public class MainController {
     @FXML
     private void onExportBackupSaveButtonClick() throws IOException {
         if (selectedGame != null && selectedProfile != null && selectedBackupSave != null) {
-            String sourcePath = Paths.get(FileUtils.backupFolderPath, selectedGame, selectedProfile, selectedBackupSave).toString();
+            String sourcePath = Paths.get(FileUtils.BACKUPS_FOLDER_PATH, selectedGame, selectedProfile, selectedBackupSave).toString();
             System.out.println("Source Path: " + sourcePath);
 
             String destinationPath = getSelectedGameActiveSavePath();
@@ -431,7 +430,7 @@ public class MainController {
             boolean userConfirmed = showConfirmationDialog("Delete Game", "Are you sure you want to delete the game '" + selectedGame + "'?");
 
             if (userConfirmed) {
-                File gameFolder = new File(FileUtils.backupFolderPath, selectedGame);
+                File gameFolder = new File(FileUtils.BACKUPS_FOLDER_PATH, selectedGame);
                 FileUtils.deleteFolder(gameFolder);
 
                 System.out.println("Game deleted: " + selectedGame);
@@ -452,7 +451,7 @@ public class MainController {
             boolean userConfirmed = showConfirmationDialog("Delete Profile", "Are you sure you want to delete the profile '" + selectedProfile + "'?");
 
             if (userConfirmed) {
-                Path profilePath = Paths.get(FileUtils.backupFolderPath, selectedGame, selectedProfile);
+                Path profilePath = Paths.get(FileUtils.BACKUPS_FOLDER_PATH, selectedGame, selectedProfile);
                 FileUtils.deleteFolder(profilePath.toFile());
 
                 System.out.println("Profile deleted: " + selectedProfile);
@@ -479,7 +478,6 @@ public class MainController {
             TextInputDialog dialog = new TextInputDialog(selectedProfile);
             dialog.setTitle("Rename Profile");
             dialog.setHeaderText("Enter the new name for the profile:");
-            //dialog.setContentText("Enter the new name for the profile:");
 
             UIManager.styleDialog(dialog);
 
@@ -487,12 +485,12 @@ public class MainController {
             Optional<String> result = dialog.showAndWait();
             result.ifPresent(newProfileName -> {
                 if (!newProfileName.trim().isEmpty()) {
-                    Path newProfilePath = Paths.get(FileUtils.backupFolderPath, selectedGame, newProfileName);
+                    Path newProfilePath = Paths.get(FileUtils.BACKUPS_FOLDER_PATH, selectedGame, newProfileName);
                     if (Files.exists(newProfilePath)) {
                         System.err.println("Error: Profile with the name '" + newProfileName + "' already exists.");
                         showErrorAlert("Error", "Profile with the name '" + newProfileName + "' already exists.");
                     } else {
-                        Path oldProfilePath = Paths.get(FileUtils.backupFolderPath, selectedGame, selectedProfile);
+                        Path oldProfilePath = Paths.get(FileUtils.BACKUPS_FOLDER_PATH, selectedGame, selectedProfile);
                         try {
                             Files.move(oldProfilePath, newProfilePath);
                             System.out.println("Profile renamed from '" + selectedProfile + "' to '" + newProfileName + "'.");
