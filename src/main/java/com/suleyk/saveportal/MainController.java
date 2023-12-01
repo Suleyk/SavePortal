@@ -490,6 +490,7 @@ public class MainController {
                     Path newProfilePath = Paths.get(FileUtils.backupFolderPath, selectedGame, newProfileName);
                     if (Files.exists(newProfilePath)) {
                         System.err.println("Error: Profile with the name '" + newProfileName + "' already exists.");
+                        showErrorAlert("Error", "Profile with the name '" + newProfileName + "' already exists.");
                     } else {
                         Path oldProfilePath = Paths.get(FileUtils.backupFolderPath, selectedGame, selectedProfile);
                         try {
@@ -500,6 +501,7 @@ public class MainController {
                             profileChoiceBox.setValue(newProfileName);
                         } catch (IOException e) {
                             e.printStackTrace();
+                            showErrorAlert("Try again", "Couldn't rename the profile, try again.");
                             System.err.println("Error renaming profile.");
                         }
                     }

@@ -16,6 +16,12 @@ organize your game progress.
   different game setups.
 - **Intuitive UI:** Enjoy a straightforward interface for a seamless experience.
 
+  <br>
+
+  ![image](https://github.com/Suleyk/SavePortal/assets/20606042/fb6c22d3-4db6-4e15-82af-da13d01b59e0)
+
+<br>
+
 ## Installation
 
 1. **Download:** Get the latest SavePortal release from [here](https://github.com/Suleyk/SavePortal/releases).
