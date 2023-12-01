@@ -79,10 +79,10 @@ Game Folder
 │   └── Configuration
 ├── GameData2
 └── SaveFolder <--------
-    ├── Save1
+    ├── Slot1
     │   ├── DataFile1.sav
     │   └── DataFile2.sav
-    └── Save2
+    └── Slot2
         ├── DataFile1.sav
         └── DataFile2.sav
 ```
@@ -95,10 +95,10 @@ SavePortal
   └── AddedGame
     └── Profile1
         └── ImportedSave00 <--------
-            ├── Save1
+            ├── Slot1
             │   ├── DataFile1.sav
             │   └── DataFile2.sav
-            └── Save2
+            └── Slot2
                 ├── DataFile1.sav
                 └── DataFile2.sav
 ```
