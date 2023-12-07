@@ -17,17 +17,17 @@
                 <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="63.0"
                             prefWidth="600.0" SplitPane.resizableWithParent="false">
                     <!-- Game-related Controls -->
-                    <ChoiceBox fx:id="gameChoiceBox" layoutX="5.0" layoutY="36.0" prefHeight="25.0" prefWidth="160.0"
+                    <ChoiceBox fx:id="gameChoiceBox" layoutX="5.0" layoutY="36.0" prefHeight="25.0" prefWidth="143.0"
                                AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="36.0"/>
-                    <Button fx:id="addGameButton" layoutX="5.0" layoutY="5.0" mnemonicParsing="false"
-                            onAction="#onAddGameButtonClick" text="Add game" AnchorPane.leftAnchor="5.0"
+                    <Button fx:id="addGameButton" layoutX="53.0" layoutY="5.0" mnemonicParsing="false"
+                            onAction="#onAddGameButtonClick" text="Add" AnchorPane.leftAnchor="53.0"
                             AnchorPane.topAnchor="5.0">
                         <tooltip>
                             <Tooltip text="Add game"/>
                         </tooltip>
                     </Button>
-                    <Button fx:id="deleteGameButton" layoutX="81.0" layoutY="5.0" mnemonicParsing="false"
-                            onAction="#onDeleteGameButtonClick" text="Delete game" AnchorPane.leftAnchor="81.0"
+                    <Button fx:id="deleteGameButton" layoutX="96.0" layoutY="5.0" mnemonicParsing="false"
+                            onAction="#onDeleteGameButtonClick" text="Delete" AnchorPane.leftAnchor="96.0"
                             AnchorPane.topAnchor="5.0">
                         <tooltip>
                             <Tooltip text="Delete game"/>
@@ -36,36 +36,39 @@
 
 
                     <!-- Profile-related Controls -->
-                    <ChoiceBox fx:id="profileChoiceBox" layoutX="198.0" layoutY="36.0" prefHeight="25.0"
-                               prefWidth="195.0" AnchorPane.rightAnchor="97.0" AnchorPane.topAnchor="36.0"/>
-                    <Button fx:id="addProfileButton" layoutX="198.0" layoutY="5.0" mnemonicParsing="false"
-                            onAction="#onAddProfileButtonClick" text="Add profile" AnchorPane.rightAnchor="216.0"
+                    <ChoiceBox fx:id="profileChoiceBox" layoutX="238.0" layoutY="36.0" prefHeight="25.0"
+                               prefWidth="167.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="36.0"/>
+                    <Button fx:id="addProfileButton" layoutX="315.0" layoutY="5.0" mnemonicParsing="false"
+                            onAction="#onAddProfileButtonClick" text="Add" AnchorPane.rightAnchor="141.0"
                             AnchorPane.topAnchor="5.0">
                         <tooltip>
                             <Tooltip text="Add profile"/>
                         </tooltip>
                     </Button>
-                    <Button fx:id="renameProfileButton" layoutX="279.0" layoutY="5.0" mnemonicParsing="false"
-                            onAction="#onRenameProfileButtonClick" text="Rename profile" AnchorPane.rightAnchor="114.0"
+                    <Button fx:id="renameProfileButton" layoutX="358.0" layoutY="5.0" mnemonicParsing="false"
+                            onAction="#onRenameProfileButtonClick" text="Rename" AnchorPane.rightAnchor="77.0"
                             AnchorPane.topAnchor="5.0">
                         <tooltip>
                             <Tooltip text="Rename profile"/>
                         </tooltip>
                     </Button>
                     <Button fx:id="deleteProfileButton" layoutX="397.0" layoutY="36.0" mnemonicParsing="false"
-                            onAction="#onDeleteProfileButtonClick" text="Delete profile" AnchorPane.rightAnchor="5.0"
+                            onAction="#onDeleteProfileButtonClick" text="Delete" AnchorPane.rightAnchor="5.0"
                             AnchorPane.topAnchor="36.0">
                         <tooltip>
                             <Tooltip text="Delete profile"/>
                         </tooltip>
                     </Button>
                     <Button fx:id="duplicateProfileButton" layoutX="381.0" layoutY="5.0" mnemonicParsing="false"
-                            onAction="#onDuplicateProfileButtonClick" text="Duplicate profile"
-                            AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                            onAction="#onDuplicateProfileButtonClick" text="Duplicate" AnchorPane.rightAnchor="5.0"
+                            AnchorPane.topAnchor="5.0">
                         <tooltip>
                             <Tooltip text="Duplicate profile"/>
                         </tooltip>
                     </Button>
+                    <Label layoutX="271.0" layoutY="9.0" prefHeight="17.0" prefWidth="44.0" text="Profile:"/>
+                    <Label layoutX="11.0" layoutY="9.0" text="Game:" AnchorPane.leftAnchor="11.0"
+                           AnchorPane.topAnchor="9.0"/>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="411.0" prefWidth="598.0">
                     <children>
@@ -76,15 +79,15 @@
                                   prefWidth="484.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="5.0"
                                   AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0"/>
                         <Button fx:id="importActiveSaveButton" layoutX="5.0" layoutY="220.0" mnemonicParsing="false"
-                                onAction="#onImportActiveSaveButtonClick" text="Import active save"
+                                onAction="#onImportActiveSaveButtonClick" text="Import savestate"
                                 AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0">
                             <tooltip>
                                 <Tooltip text="Import active save"/>
                             </tooltip>
                         </Button>
-                        <Button fx:id="exportBackupSaveButton" layoutX="123.0" layoutY="220.0" mnemonicParsing="false"
-                                onAction="#onExportBackupSaveButtonClick" text="Export backup save"
-                                AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="123.0">
+                        <Button fx:id="exportBackupSaveButton" layoutX="114.0" layoutY="222.0" mnemonicParsing="false"
+                                onAction="#onExportBackupSaveButtonClick" text="Load savestate"
+                                AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="114.0">
                             <tooltip>
                                 <Tooltip text="Export backup save"/>
                             </tooltip>
@@ -109,7 +112,7 @@
                                 <Tooltip text="Toggle dark mode"/>
                             </tooltip>
                         </ToggleButton>
-                        <ImageView fitHeight="249.0" fitWidth="322.0" layoutX="124.0" layoutY="-16.0" opacity="0.15"
+                        <ImageView fitHeight="249.0" fitWidth="322.0" layoutX="124.0" layoutY="-16.0" opacity="0.05"
                                    pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@SavePortalBackground.png"/>
