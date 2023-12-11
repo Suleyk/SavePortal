@@ -114,8 +114,8 @@
                                 <Tooltip text="Toggle dark mode"/>
                             </tooltip>
                         </ToggleButton>
-                        <ImageView fitHeight="223.0" fitWidth="238.0" layoutX="136.0" layoutY="72.0" opacity="0.05"
-                                   pickOnBounds="true" preserveRatio="true">
+                        <ImageView disable="true" fitHeight="223.0" fitWidth="238.0" layoutX="136.0" layoutY="72.0"
+                                   opacity="0.05" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@SavePortalBackground.png"/>
                             </image>
