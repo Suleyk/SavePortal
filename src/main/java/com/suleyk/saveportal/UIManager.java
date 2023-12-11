@@ -13,6 +13,7 @@ import javafx.stage.StageStyle;
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class UIManager {
     // ObservableLists to store data for UI elements
@@ -88,6 +89,16 @@ public class UIManager {
         File[] subfolders = selectedProfileFolder.listFiles(File::isDirectory);
 
         if (subfolders != null) {
+            // Sort subfolders based on the last modified timestamp of the first file in each folder
+            Arrays.sort(subfolders, Comparator.comparingLong(folder -> {
+                File[] files = folder.listFiles();
+                if (files != null && files.length > 0) {
+                    return files[0].lastModified();
+                } else {
+                    return 0L;
+                }
+            }));
+
             // Extract folder names and update the backup saves list
             String[] folderNames = Arrays.stream(subfolders).map(File::getName).toArray(String[]::new);
             backupSavesList.setAll(folderNames);
