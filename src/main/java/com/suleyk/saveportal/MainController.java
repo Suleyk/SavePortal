@@ -44,6 +44,8 @@ public class MainController {
     private Button minimizeButton;
     @FXML
     private Button closeButton;
+    @FXML
+    private Button openGameFolderButton;
     // Selected items
     private String selectedGame;
     private String selectedProfile;
@@ -102,6 +104,17 @@ public class MainController {
             System.err.println("Backup folder path is not set.");
         }
     }
+
+    @FXML
+    private void onOpenGameFolderButtonClick() {
+        String activeSavePath = getSelectedGameActiveSavePath();
+
+        if (activeSavePath != null) {
+            FileUtils.openFolder(activeSavePath);
+        } else {
+            System.err.println("Active save path is not set or the game is not selected.");
+        }
+    }
     public ToggleButton getToggleDarkModeButton() {
         return toggleDarkModeButton;
     }
@@ -115,6 +128,7 @@ public class MainController {
         duplicateProfileButton.disableProperty().bind(gameChoiceBox.valueProperty().isNull());
         profileChoiceBox.disableProperty().bind(gameChoiceBox.valueProperty().isNull());
         deleteGameButton.disableProperty().bind(gameChoiceBox.valueProperty().isNull());
+        openGameFolderButton.disableProperty().bind(gameChoiceBox.valueProperty().isNull());
 
         // Disable buttons to manage profiles if no profile is selected
         renameProfileButton.disableProperty().bind(profileChoiceBox.valueProperty().isNull());
@@ -289,6 +303,7 @@ public class MainController {
         selectedBackupSave = newBackupSave;
         System.out.println("Selected BackupSave: " + newBackupSave);
     }
+
 
     // Event handler for the "Add Game" button
     @FXML
